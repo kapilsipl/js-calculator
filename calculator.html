@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* text styling */
+	font: bold 14px Arial, sans-serif;
+}
+/* body bg */
+html {
+	height: 100%;
+	background: white;
+	background: radial-gradient(circle, #fff 20%, #ccc);
+	background-size: cover;
+}
+
+/* KPL added some 3D effects */
+#calculator {
+	width: 325px;
+	height: auto;
+	margin: 30px auto;
+	padding: 20px 20px 9px;
+	background: #9dd2ea;
+	background: linear-gradient(#9dd2ea, #8bceec);
+	border-radius: 3px;
+	box-shadow: 0px 4px #009de4, 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Top section */
+.top .clear {
+	float: left;
+	border: none;
+}
+
+/* Inset shadow on the screen to create indent */
+.top .screen {
+	height: 40px;
+	width: 212px;
+	float: right;
+	padding: 0 10px;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+	font-size: 17px;
+	line-height: 40px;
+	color: white;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+	text-align: right;
+	letter-spacing: 1px;
+}
+
+/* Clear floats */
+.keys, .top {overflow: hidden;}
+
+/* Applying same to the keys */
+.keys span, .top .clear,.keys input {
+	float: left;
+	position: relative;
+	top: 0;
+	cursor: pointer;
+	width: 66px;
+	height: 36px;
+	background: white;
+	border-radius: 3px;
+	box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+	margin: 0 7px 11px 0;
+	color: #888;
+	line-height: 36px;
+	text-align: center;
+	
+	/* prevent selection of text inside keys */
+	user-select: none;
+	
+	/* Smoothing out hover and active states using css3 transitions */
+	transition: all 0.2s ease;
+}
+
+/* Remove right margins from operator keys */
+/* style different type of keys (operators/evaluate/clear) differently */
+.keys .operator {
+	background: #FFF0F5;
+	margin-right: 0;
+}
+
+.keys .eval {
+	background: #f1ff92;
+	box-shadow: 0px 4px #9da853;
+	color: #888e5f;
+}
+
+.top .clear {
+	background: #ff9fa8;
+	box-shadow: 0px 4px #ff7c87;
+	color: white;
+}
+
+/* Some hover effects */
+.keys input:hover {
+	background: #9c89f6;
+	box-shadow: 0px 4px #6b54d3;
+	color: white;
+}
+
+.keys .eval:hover {
+	background: #abb850;
+	box-shadow: 0px 4px #717a33;
+	color: #ffffff;
+}
+
+.top .clear:hover {
+	background: #f68991;
+	box-shadow: 0px 4px #d3545d;
+	color: white;
+}
+
+/* Simulating "pressed" effect on active state of the keys by removing the box-shadow and moving the keys down a bit */
+.keys input:active {
+	box-shadow: 0px 0px #6b54d3;
+	top: 4px;
+}
+
+.keys input.eval:active {
+	box-shadow: 0px 0px #717a33;
+	top: 4px;
+}
+
+.top .clear:active {
+	top: 4px;
+	box-shadow: 0px 0px #d3545d;
+}
+input{border: none;}
+.heading{margin: 20px auto;font-size:24px;text-align:center;}
+	</style>
+	<script type="text/javascript">
+		function checkValues(k,n){
+			calcform.inputScreen.value=calcform.inputScreen.value+n;
+		}
+	</script>
+</head>
+<body>
+	<h1 class="heading">Calculator by kpl</h1>
+	<div id="calculator">
+		<form name="calcform">
+			<div class="top">
+			<input type="button" value="C" class="clear" name="clear" onclick="calcform.inputScreen.value=''">
+			<input name="inputScreen" type="text" class="screen" style="text-align:right" readonly="">
+			</div>
+			<div class="keys">
+				<input type="button" value="7" name="btn8" onclick="checkValues(name,value)">
+				<input type="button" value="8" name="btn7" onclick="checkValues(name,value)">
+				<input type="button" value="9" name="btn9" onclick="checkValues(name,value)">
+				<input type="button" value="+" name="adding" class="operator" onclick="checkValues(name,value)"><br>
+				<input type="button" value="4" name="btn4" onclick="checkValues(name,value)">
+				<input type="button" value="5" name="btn5" onclick="checkValues(name,value)">
+				<input type="button" value="6" name="btn6" onclick="checkValues(name,value)">
+				<input type="button" value="-" name="minus" class="operator" onclick="checkValues(name,value)"><br>
+				<input type="button" value="1" name="btn1" onclick="checkValues(name,value)">
+				<input type="button" value="2" name="btn2" onclick="checkValues(name,value)">
+				<input type="button" value="3" name="btn3" onclick="checkValues(name,value)">
+				<input type="button" value="/" name="btndivi" class="operator" onclick="checkValues(name,value)"><br>
+				<input type="button" value="0" name="btn0" onclick="checkValues(name,value)">
+				<input type="button" value="." name="btndot" onclick="checkValues(name,value)">
+				<input type="button" value="=" name="btnequal" class="eval" onclick="inputScreen.value=eval(inputScreen.value)">
+				<input type="button" value="*" name="multi" class="operator" onclick="checkValues(name,value)">
+			</div>
+		</form>
+	</div>
+</body>
+</html>
